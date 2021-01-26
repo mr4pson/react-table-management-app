@@ -1,6 +1,5 @@
 .form {
-  width: 280px;
-  height: 330px;
+  width: 100%;
   background: #fff;
   padding: 19px;
   box-sizing: border-box;
@@ -19,8 +18,20 @@
     outline: none;
     height: 40px;
     box-sizing: border-box;
+    &_invalid {
+      border: 1px solid red;
+    }
     &::placeholder {
         color: #868c96;
+    }
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    &[type=number] {
+      -moz-appearance: textfield;
     }
   }
   &__submit {
@@ -41,11 +52,12 @@
     }
   }
   &_vertical {
-    color: #ccc;
+    max-width: 280px;
+    height: 330px;
   }
   &_horizontal {
     height: 200px;
-    width: 545px;
+    max-width: 545px;
     .container {
       flex-wrap: wrap;
       flex-direction: initial;
@@ -62,5 +74,11 @@
       width: 245px;
       margin-left: 25%;
     }
+  }
+}
+
+@media (max-width: 768px) {
+  .form {
+    margin-bottom: 20px;
   }
 }

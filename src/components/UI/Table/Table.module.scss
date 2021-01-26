@@ -1,0 +1,110 @@
+@mixin table-button-styles {
+  width: fit-content;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  outline: none;
+}
+
+.table {
+  max-width: 595px;
+  margin-bottom: 20px;
+  overflow: auto;
+  &__body {
+    border-collapse: collapse;
+    width: 100%;
+    thead {
+      th {
+        padding: 6px 15px;
+        background: #0a508c;
+        border: none;
+        color: #90a8c3;
+        font-size: 14px;
+        font-weight: 300;
+        border: 1px solid #0a508c;
+        text-align: left;
+        &:nth-child(1) {
+          max-width: 16%;
+        }
+        &:nth-child(2) {
+          max-width: 20%;
+        }
+        &:nth-child(3) {
+          max-width: 16%;
+        }
+        &:nth-child(4) {
+          max-width: 13%;
+        }
+        &:nth-child(5) {
+          max-width: 30%;
+        }
+      }
+    }
+    tbody {
+      td {
+        padding: 7px 15px;
+        font-size: 12px;
+        border: 1px solid #c8ccd4;
+        background: #fff;
+        &:nth-child(1) {
+          max-width: 16%;
+        }
+        &:nth-child(2) {
+          max-width: 20%;
+        }
+        &:nth-child(3) {
+          max-width: 16%;
+        }
+        &:nth-child(4) {
+          max-width: 13%;
+        }
+        &:nth-child(5) {
+          max-width: 30%;
+        }
+      }
+    }
+  }
+  &__actions {
+    text-align: right;
+    margin-bottom: 13px;
+  }
+  &__button {
+    @include table-button-styles();
+    &_copy {
+      color: #fff;
+      background: #1493ff;
+      width: 90px;
+      height: 25px;
+      border-radius: 3px;
+      margin-right: 25px;
+      transition: all .3s;
+      &:hover {
+        background: #1681dc;
+      }
+    }
+    &_remove {
+      background-image: url(/assets/icons/btn-delete.png);
+      width: 12px;
+      height: 12px;
+      background-size: cover;
+      margin-right: 13px;
+    }
+  }
+  .row {
+    &__actions {
+      display: flex;
+      justify-content: space-around;
+    }
+    &__button {
+      @include table-button-styles();
+      text-decoration: underline;
+      &_edit {
+        color: #067ce1;
+      }
+      &_delete {
+        color: #b02337;
+      }
+    }
+  }
+}

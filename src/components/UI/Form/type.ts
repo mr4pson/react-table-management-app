@@ -1,12 +1,16 @@
+class IObjectKeys {
+  [key: string]: string | boolean;
+}
+
 export enum FormType {
   Vertical = 'vertical',
   Horizontal = 'horizontal',
 }
 
-export type TypeUserInfo = {
-  id: number;
+export class TypeUserInfo extends IObjectKeys {
+  id: string;
   name: string;
   surname: string;
-  age: string;
+  age?: string;
   city: string;
 }

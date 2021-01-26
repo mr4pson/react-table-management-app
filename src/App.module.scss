@@ -1,5 +1,6 @@
 .container {
-  width: 1235px;
+  max-width: 1235px;
+  width: 100%;
   margin: auto;
 }
 .app {
@@ -7,5 +8,76 @@
   &__forms {
     display: flex;
     justify-content: space-between;
+  }
+}
+.modal-form {
+  padding: 32px 25px;
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__input {
+    max-width: 155px;
+    padding: 15px;
+    font-size: 12px;
+    margin-bottom: 18px;
+    border: 1px solid #c3ccd9;
+    border-radius: 3px;
+    outline: none;
+    height: 40px;
+    box-sizing: border-box;
+    &::placeholder {
+        color: #868c96;
+    }
+    &_invalid {
+      border: 1px solid red;
+    }
+  }
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__footer-left {
+    display: flex;
+    align-items: center;
+  }
+  &__save-btn {
+    background: #1493ff;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 3px;
+    outline: none;
+    user-select: none;
+    height: 40px;
+    cursor: pointer;
+    transition: all .3s;
+    max-width: 320px;
+    width: 100%;
+    &:hover {
+      background: #1681dc;
+    }
+    &:disabled {
+      background: #0d4879;
+    }
+  }
+  &__checkbox {
+    width: 22px;
+    height: 22px;
+    margin: 0;
+    margin-right: 18px;
+  }
+  &__label {
+    color: #868c96;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .app {
+    &__forms {
+      display: block;
+    }
   }
 }

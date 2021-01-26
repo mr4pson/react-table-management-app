@@ -1,0 +1,11 @@
+.container {
+  width: 1235px;
+  margin: auto;
+}
+.app {
+  margin-top: 20px;
+  &__forms {
+    display: flex;
+    justify-content: space-between;
+  }
+}

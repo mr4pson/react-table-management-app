@@ -1,24 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styles from './App.module.scss';
+import Form from './components/UI/Form';
+import classNames from 'classnames';
+import { FormType, TypeUserInfo } from './components/UI/Form/type';
+import { useState } from 'react';
+
+const defaultUserInfo: TypeUserInfo = {
+  id: null,
+  name: '',
+  surname: '',
+  age: '',
+  city: '',
+}
 
 function App() {
+  const [userInfo, setUserInfo] = useState<TypeUserInfo>(defaultUserInfo);
+  const [users, setUsers] = useState<TypeUserInfo[]>([]);
+  const handleSetUserInfo = (userInfo: TypeUserInfo) => {
+    setUserInfo({...userInfo, id: users.length});
+  }
+  const addNewUser = (user: TypeUserInfo) => {
+    setUsers(users.concat(user));
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={classNames(styles['app'], styles['container'])}>
+      <div className={styles['app__forms']}>
+        <Form addNewUser={addNewUser} userInfo={userInfo} setUserInfo={handleSetUserInfo} type={FormType.Vertical} />
+        <Form addNewUser={addNewUser} userInfo={userInfo} setUserInfo={handleSetUserInfo} type={FormType.Horizontal} />
+      </div>
     </div>
   );
 }

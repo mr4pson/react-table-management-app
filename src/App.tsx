@@ -3,6 +3,7 @@ import Form from './components/UI/Form';
 import classNames from 'classnames';
 import { FormType, TypeUserInfo } from './components/UI/Form/type';
 import { useState } from 'react';
+import TablesContainer from './components/containers/TableContainer';
 
 const defaultUserInfo: TypeUserInfo = {
   id: null,
@@ -27,6 +28,7 @@ function App() {
         <Form addNewUser={addNewUser} userInfo={userInfo} setUserInfo={handleSetUserInfo} type={FormType.Vertical} />
         <Form addNewUser={addNewUser} userInfo={userInfo} setUserInfo={handleSetUserInfo} type={FormType.Horizontal} />
       </div>
+      <TablesContainer users={users} />
     </div>
   );
 }

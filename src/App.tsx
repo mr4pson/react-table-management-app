@@ -8,58 +8,15 @@ import { TypeTable } from './components/UI/Table/type';
 import * as uuid from 'uuid'; 
 import Modal from './components/UI/Modal';
 import { TypeModalData, TypeFormValidation, TypeFieldValidation } from './type';
-
-const defaultUserInfo: TypeUserInfo = {
-  id: null,
-  name: '',
-  surname: '',
-  age: '',
-  city: '',
-}
-
-const defaultTables: TypeTable[] = [
-  {
-    id: uuid.v4(),
-    rows: [
-      {
-        id: uuid.v4(),
-        name: 'Name',
-        surname: 'Surname',
-        age: 'Age',
-        city: 'City',
-      }
-    ],
-  }
-]
-
-const defaultModalData: TypeModalData = {
-  data: {
-    id: uuid.v4(),
-    rows: [],
-  },
-  index: null,
-}
-
-const defaultUserInfoValidation: TypeFormValidation = {
-  name: { touched: false, valid: false },
-  surname: { touched: false, valid: false },
-  age: { touched: false, valid: false },
-  city: { touched: false, valid: false },
-}
-
-const defaultUserInfoModalValidation: TypeFormValidation = {
-  name: { touched: false, valid: false },
-  surname: { touched: false, valid: false },
-  city: { touched: false, valid: false },
-}
+import { DEFAULT_MODAL_DATA, DEFAULT_TABLES, DEFAULT_USER_INFO, DEFAULT_USER_INFO_MODAL_VALIDATION, DEFAULT_USER_INFO_VALIDATION } from './constants';
 
 function App() {
-  const [userInfo, setUserInfo] = useState<TypeUserInfo>(defaultUserInfo);
-  const [userInfoValidation, setUserInfoValidation] = useState<TypeFormValidation>(defaultUserInfoValidation);
-  const [userInfoModalValidation, setUserInfoModalValidation] = useState<TypeFormValidation>(defaultUserInfoModalValidation);
-  const [tables, setTables] = useState<TypeTable[]>(defaultTables);
+  const [userInfo, setUserInfo] = useState<TypeUserInfo>(DEFAULT_USER_INFO);
+  const [userInfoValidation, setUserInfoValidation] = useState<TypeFormValidation>(DEFAULT_USER_INFO_VALIDATION);
+  const [userInfoModalValidation, setUserInfoModalValidation] = useState<TypeFormValidation>(DEFAULT_USER_INFO_MODAL_VALIDATION);
+  const [tables, setTables] = useState<TypeTable[]>(DEFAULT_TABLES);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [modalData, setModalData] = useState<TypeModalData>(defaultModalData);
+  const [modalData, setModalData] = useState<TypeModalData>(DEFAULT_MODAL_DATA);
   const [isAgreed, setisAgreed] = useState<boolean>(false);
 
   const getFormInputClassNames = (field: TypeFieldValidation) => {
@@ -84,7 +41,7 @@ function App() {
     const firstTable = tableList[0];
     firstTable.rows.push({ ...user, id: uuid.v4() });
     setTables(tableList);
-    setUserInfo(defaultUserInfo);
+    setUserInfo(DEFAULT_USER_INFO);
   }
   const handleRowDelete = (table: TypeTable) => {
     const newTables = [...tables];
